@@ -9,7 +9,7 @@ public = FastAPI(title="Backend app")
 app = FastAPI(title="Backend Api")
 
 app.mount("/api", app)
-app.mount("/", StaticFiles(directory="public", html=True), name="public")
+app.mount("/", StaticFiles(directory="../public", html=True), name="public")
 
 @app.get("/")
 def read_root():
