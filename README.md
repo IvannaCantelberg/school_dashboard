@@ -1,4 +1,4 @@
-# school_dashboard
+# School Dashboard
 
 Pet project built with Python FastApi framework on backend and Angular on frontend.
 
