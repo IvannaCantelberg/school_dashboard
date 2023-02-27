@@ -1,0 +1,7 @@
+.vscode
+
+backend/__pycache__
+backend/public
+
+
+frontend/.angular
