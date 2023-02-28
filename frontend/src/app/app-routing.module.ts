@@ -4,22 +4,33 @@ import { BasePageComponent } from './base-page/base-page.component';
 import { DashboardPageComponent } from './dashboard-page/dashboard-page.component';
 import { LoginComponent } from './login/login.component';
 import { ProfilePageComponent } from './profile-page/profile-page.component';
+import { RegisterComponent } from './register/register.component';
 
 const routes: Routes = [
   { path: 'login', 
     component: LoginComponent
   },
+  { path: 'register', 
+    component: RegisterComponent
+  },
+  { path: '',
+    redirectTo: 'dashboard',
+    pathMatch: 'full',
+  },
   { path: '',
     component: BasePageComponent,
-    children:[
+    children: [
       { path: 'dashboard', 
-       component: DashboardPageComponent
+        component: DashboardPageComponent,
       },
       { path: 'profile', 
         component: ProfilePageComponent
-      }
+      },
     ]
-  }  
+  },   
+  { path: '**',
+    redirectTo: 'dashboard'
+  } 
 ];
 
 @NgModule({

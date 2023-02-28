@@ -14,11 +14,13 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatCardModule} from '@angular/material/card';
+import {MatDividerModule} from '@angular/material/divider';
 
 import { DashboardPageComponent } from './dashboard-page/dashboard-page.component';
 import { SideNavigationComponent } from './side-navigation/side-navigation.component';
 import { ProfilePageComponent } from './profile-page/profile-page.component';
 import { BasePageComponent } from './base-page/base-page.component';
+import { RegisterComponent } from './register/register.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +29,8 @@ import { BasePageComponent } from './base-page/base-page.component';
     DashboardPageComponent,
     SideNavigationComponent,
     ProfilePageComponent,
-    BasePageComponent
+    BasePageComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
@@ -41,7 +44,8 @@ import { BasePageComponent } from './base-page/base-page.component';
     MatButtonModule,
     MatSidenavModule,
     MatToolbarModule,
-    MatCardModule
+    MatCardModule,
+    MatDividerModule
   ],
   providers: [],
   bootstrap: [AppComponent],

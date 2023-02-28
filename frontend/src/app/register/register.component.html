@@ -1,0 +1,24 @@
+<form class="form-container" (submit)="onSubmit()" [formGroup]="registerFormControl">
+    <h2>Registration form</h2>
+    <mat-divider></mat-divider>
+    <mat-form-field appearance="fill">
+        <mat-label>Name:</mat-label>
+        <input matInput type="text" formControlName="userName" required>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+        <mat-label>Surname:</mat-label>
+        <input matInput type="text" formControlName="userSurname" required>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+        <mat-label>Enter your email</mat-label>
+        <input matInput type="email" formControlName="userEmail" required>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Enter your password</mat-label>
+      <input matInput [type]="visible ? 'text':'password'" formControlName="userPassword" required>
+      <button mat-icon-button matSuffix (click)="visible = !visible" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="visible">
+        <mat-icon>{{visible ? 'visibility_off' : 'visibility'}}</mat-icon>
+      </button>
+    </mat-form-field>
+    <button mat-button color="primary" [disabled]="registerFormControl.invalid">Submit</button>
+</form>
