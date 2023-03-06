@@ -1,9 +1,9 @@
 from sqlalchemy import Boolean, Column, Integer, String
 import uuid
 
-from utils import generate_hashed_password
+from app.utils import generate_hashed_password
 
-from database import Base
+from app.db.db_setup import Base
 
 
 class User(Base):
@@ -15,14 +15,14 @@ class User(Base):
     email = Column(String, unique=True, index=True)
     password = Column(String)
     is_admin = Column(Boolean, default=True)
-    
+
     def __init__(self, username, email, password, is_admin=False):
         self.username = username
         self.email = email
         self.password = generate_hashed_password(password)
         self.is_admin = is_admin
         self.uuid = str(uuid.uuid4())
-        
+
     def __repr__(self):
         return f'User({self.username}, {self.email}, {self.uuid})'
 

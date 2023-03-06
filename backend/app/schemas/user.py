@@ -6,28 +6,20 @@ class UserBase(BaseModel):
 
 
 class UserAuth(UserBase):
-    username: str
     password: str
 
     class Config:
         orm_mode = True
 
 
-class User(UserAuth):
-    id: int
-    uuid: str
-    is_admin: bool
-
-    class Config:
-        orm_mode = True
-
-
-class UserCreate(BaseModel):
-    id: int
-    uuid: str
+class UserCreate(UserAuth):
     username: str
-    email: str
-    password: str
+
+
+class User(UserCreate):
+    id: int
+    uuid: str
+
     is_admin: bool
 
     class Config:
