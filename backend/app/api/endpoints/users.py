@@ -2,14 +2,18 @@ from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
 
 from app.api.deps import get_db
-from app.schemas.user import User
-from app.api.crud import get_users, get_user
+from app.schemas.user import User, UserAuth
+from app.api.crud import get_users, get_user, get_current_user
 
 router = APIRouter()
 
 
 @router.get("/", response_model=list[User])
-def read_users(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
+def read_users(
+        skip: int = 0,
+        limit: int = 100,
+        db: Session = Depends(get_db),
+        current_user: UserAuth = Depends(get_current_user)):
     users = get_users(db, skip=skip, limit=limit)
     return users
 
