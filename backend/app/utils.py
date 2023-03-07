@@ -14,12 +14,14 @@ ALGORITHM = "HS256"
 JWT_SECRET_KEY = os.environ['JWT_SECRET_KEY']
 
 
-def generate_hashed_password(password: str) -> str:
-    return password_context.hash(password)
+class Hash:
+    @staticmethod
+    def bcrypt(plain_password: str) -> str:
+        return password_context.hash(plain_password)
 
-
-def verify_password(password: str, hashed_pass: str) -> bool:
-    return password_context.verify(password, hashed_pass)
+    @staticmethod
+    def verify(plain_password: str, hashed_pass: str) -> bool:
+        return password_context.verify(plain_password, hashed_pass)
 
 
 def create_access_token(data: dict, expires_delta: Optional[timedelta] = None):

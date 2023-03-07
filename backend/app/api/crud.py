@@ -5,7 +5,7 @@ from sqlalchemy.orm import Session
 from app.api.deps import get_db, oauth2_schema
 from app.db.models.user import User
 from app.schemas.user import UserCreate
-from app.utils import generate_hashed_password, JWT_SECRET_KEY, ALGORITHM
+from app.utils import Hash, JWT_SECRET_KEY, ALGORITHM
 
 
 def get_user(db: Session, user_id: int):
@@ -25,7 +25,7 @@ def get_users(db: Session, skip: int = 0, limit: int = 100):
 
 
 def create_user(db: Session, user: UserCreate):
-    hashed_password = generate_hashed_password(user.password)
+    hashed_password = Hash.bcrypt(user.password)
     db_user = User(username=user.username, email=user.email, password=hashed_password)
     db.add(db_user)
     db.commit()

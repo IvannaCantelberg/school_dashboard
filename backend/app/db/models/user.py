@@ -1,7 +1,7 @@
 from sqlalchemy import Boolean, Column, Integer, String
 import uuid
 
-from app.utils import generate_hashed_password
+from app.utils import Hash
 
 from app.db.db_setup import Base
 
@@ -19,7 +19,7 @@ class User(Base):
     def __init__(self, username, email, password, is_admin=False):
         self.username = username
         self.email = email
-        self.password = generate_hashed_password(password)
+        self.password = Hash.bcrypt(password)
         self.is_admin = is_admin
         self.uuid = str(uuid.uuid4())
 
