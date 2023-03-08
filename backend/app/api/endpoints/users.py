@@ -3,7 +3,8 @@ from sqlalchemy.orm import Session
 
 from app.api.deps import get_db
 from app.schemas.user import User, UserAuth
-from app.api.crud import get_users, get_user, get_current_user
+from app.api.crud import get_users, get_user
+from app.api.auth_handler import AuthJWT
 
 router = APIRouter()
 
@@ -13,7 +14,7 @@ def read_users(
         skip: int = 0,
         limit: int = 100,
         db: Session = Depends(get_db),
-        current_user: UserAuth = Depends(get_current_user)):
+        current_user: UserAuth = Depends(AuthJWT.get_current_user)):
     users = get_users(db, skip=skip, limit=limit)
     return {
         'users': users,
