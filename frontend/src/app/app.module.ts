@@ -21,6 +21,7 @@ import { SideNavigationComponent } from './side-navigation/side-navigation.compo
 import { ProfilePageComponent } from './profile-page/profile-page.component';
 import { BasePageComponent } from './base-page/base-page.component';
 import { RegisterComponent } from './register/register.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { RegisterComponent } from './register/register.component';
     BrowserAnimationsModule,
     FormsModule, 
     ReactiveFormsModule,
+    HttpClientModule,
     MatFormFieldModule,
     MatIconModule,
     MatInputModule,
